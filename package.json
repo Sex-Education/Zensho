@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@testing-library/dom": "^8.10.1"
+  }
+}
