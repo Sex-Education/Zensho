@@ -22,6 +22,7 @@ func main() {
 		})
 		api.POST("/register", controllers.Register)
 		api.POST("/login", controllers.Login)
+		api.POST("/remove-user", controllers.RemoveUser)
 	}
 	r.Run(":8080")
 }

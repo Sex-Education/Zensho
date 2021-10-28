@@ -80,3 +80,20 @@ func Login(c *gin.Context) {
 		// fmt.Println(tokenString, err)
 	}
 }
+
+func RemoveUser(c *gin.Context) {
+	username := c.PostForm("username")
+
+	e := models.DeleteUserByUserName(username)
+	if e != nil {
+		c.JSON(200, gin.H{
+			"success": false,
+			"message": e.Error(),
+		})
+	} else {
+		c.JSON(200, gin.H{
+			"success": true,
+			"message": "Success!",
+		})
+	}
+}

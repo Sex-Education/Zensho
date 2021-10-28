@@ -33,3 +33,13 @@ func GetUserByUserName(username string) *User {
 	}
 	return nil
 }
+
+func DeleteUserByUserName(username string) error {
+	statement := `DELETE FROM users WHERE "username" = $1`
+	_, e := connection.PostgresConnection.Exec(statement, username)
+	if e != nil {
+		// log.Fatal(e.Error())
+		return e
+	}
+	return nil
+}
