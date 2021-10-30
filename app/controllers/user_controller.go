@@ -3,6 +3,7 @@ package controllers
 import (
 	"crypto/sha256"
 	"encoding/hex"
+	"net/http"
 	"time"
 
 	"zensho/models"
@@ -32,16 +33,17 @@ func Register(c *gin.Context) {
 
 	err := user.Save()
 	if err != nil {
-		c.JSON(200, gin.H{
+		c.JSON(http.StatusOK, gin.H{
 			"success": false,
 			"message": err.Error(),
 		})
-	} else {
-		c.JSON(200, gin.H{
-			"success": true,
-			"message": "Register success!",
-		})
+		return
 	}
+
+	c.JSON(200, gin.H{
+		"success": true,
+		"message": "Register success!",
+	})
 }
 
 func Login(c *gin.Context) {
@@ -52,33 +54,35 @@ func Login(c *gin.Context) {
 
 	user := models.GetUserByUserName(username)
 	if user.HashedPassword != hashedPassword {
-		c.JSON(200, gin.H{
+		c.JSON(http.StatusOK, gin.H{
 			"success": false,
 			"message": "Invalid!",
 		})
-	} else {
-		token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-			"usernamme": user.UserName,
-			"role":      user.Role,
-			"exp":       time.Now().Add(1 * time.Hour).Unix(), //1 hour
-		})
-
-		// Sign and get the complete encoded token as a string using the secret
-		tokenString, err := token.SignedString(hmacSampleSecret)
-
-		if err != nil {
-			c.JSON(200, gin.H{
-				"success": false,
-				"message": err.Error(),
-			})
-		} else {
-			c.JSON(200, gin.H{
-				"success": true,
-				"token":   tokenString,
-			})
-		}
-		// fmt.Println(tokenString, err)
+		return
 	}
+
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"usernamme": user.UserName,
+		"role":      user.Role,
+		"exp":       time.Now().Add(1 * time.Hour).Unix(), //1 hour
+	})
+
+	// Sign and get the complete encoded token as a string using the secret
+	tokenString, err := token.SignedString(hmacSampleSecret)
+
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{
+			"success": false,
+			"message": err.Error(),
+		})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"success": true,
+		"token":   tokenString,
+	})
+	// fmt.Println(tokenString, err)
+
 }
 
 func RemoveUser(c *gin.Context) {
@@ -86,14 +90,15 @@ func RemoveUser(c *gin.Context) {
 
 	e := models.DeleteUserByUserName(username)
 	if e != nil {
-		c.JSON(200, gin.H{
+		c.JSON(http.StatusOK, gin.H{
 			"success": false,
 			"message": e.Error(),
 		})
-	} else {
-		c.JSON(200, gin.H{
-			"success": true,
-			"message": "Success!",
-		})
+		return
 	}
+	
+	c.JSON(http.StatusOK, gin.H{
+		"success": true,
+		"message": "Success!",
+	})
 }
