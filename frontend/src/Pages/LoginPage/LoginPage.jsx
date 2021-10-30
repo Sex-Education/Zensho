@@ -29,9 +29,12 @@ export default function LoginPage() {
     }
 
     const handleSubmit = () => {
-        console.log(username,password)
+        const newUser = new FormData()
+        newUser.append("username",username)
+        newUser.append("password",password)
+        console.log("username: ",username,"password: ",password)
         axios.post("https://zensho.herokuapp.com/api/register",
-            {username: username, password: password}
+            newUser
         ).then(response => {
             console.log(response)
         }).catch(error => {
