@@ -6,6 +6,7 @@ export default function LoginPage() {
     const [username,setUsername] = useState("")
     const [password,setPassword] = useState("")
     const [fullname,setFullname] = useState("")
+    const [isChecked,setIsChecked] = useState(false)
 
     useEffect(() => {
         console.log('Rerender Login Page')
@@ -21,6 +22,10 @@ export default function LoginPage() {
 
     const handleFullnameChange = (e) => {
         setFullname(e.target.value)
+    }
+
+    const handleCheckboxClicked = (e) => {
+        setIsChecked(!isChecked)
     }
 
     const handleSubmit = () => {
@@ -51,7 +56,7 @@ export default function LoginPage() {
                 <label className="w-3/5 text-lg my-2 font-semibold">Password</label>
                 <input className="text-lg focus:outline-none w-3/5 border-b-2 border-gray-400 my-2" placeholder="password" value={password} type="password" onChange={(e) => handlePasswordChange(e)}/>
                 <div className="flex flex-row my-8 w-3/5">
-                    <input className="form-checkbox w-6 h-6 mr-2" type="checkbox"/>
+                    <input className="form-checkbox w-6 h-6 mr-2" type="checkbox" checked={isChecked} onClick={() => handleCheckboxClicked()}/>
                     <label className="text-sm">I agree and accept the <span className="text-blue-400">Terms and Condition</span></label>
                 </div>
                 <button className="w-1/2 bg-blue-400 py-2 rounded-md text-white hover:bg-blue-900" onClick={() => handleSubmit()}>Sign Up</button>
