@@ -5,13 +5,20 @@ import (
 	"zensho/controllers"
 	"zensho/migration"
 
+	"github.com/gin-contrib/cors"
+
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	migration.RunMigration()
-
 	r := gin.Default()
+
+	corConfig := cors.DefaultConfig()
+	corConfig.AllowOrigins = []string{"http://localhost:3000"}
+	corConfig.AllowCredentials = true
+
+	r.Use(cors.New(corConfig))
 
 	api := r.Group("/api")
 	{
