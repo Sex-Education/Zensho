@@ -1,50 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
 
-.background-container {
-    @apply relative overflow-y-hidden h-screen w-screen bg-black flex flex-row items-center justify-center;
-}
-
-.background {
-    @apply absolute z-0 w-full object-fill;
-}
-
-.auth-box-container {
-    @apply z-10 font-mono flex flex-row items-center justify-center w-5/6 h-5/6 rounded-xl
-}
-
-.auth-box-left {
-    @apply relative overflow-hidden w-1/2 h-full bg-blue-400 rounded-l-xl;
-}
-
-.auth-box-right {
-    @apply w-1/2 h-full bg-white flex flex-col justify-center items-center rounded-r-xl;
-}
-
-.input-label {
-    @apply w-3/5 text-lg my-2 font-normal;
-}
-
-.input-field {
-    @apply font-thin text-lg focus:outline-none w-3/5 border-b border-gray-400 my-2 bg-gray-50;
-}
-
-.choose-form-active {
-    @apply cursor-pointer h-full w-1/2 flex flex-row items-center justify-center bg-gray-50 text-black opacity-100 transition-opacity duration-300 font-semibold;
-}
-
-.choose-form-inactive {
-    @apply cursor-pointer h-full w-1/2 flex flex-row items-center justify-center bg-white text-black opacity-50 transition-opacity duration-300 font-light;
-}
-
 @tailwind utilities;
 
+.background-gray{
+  background-color: #1b1b1b;
+}
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
 @layer utilities {
-    .font-heebo {
-        font-family: 'Heebo', sans-serif;
-    }
     .smooth-scroll {
         scroll-behavior: smooth;
     }

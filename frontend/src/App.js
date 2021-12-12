@@ -1,11 +1,16 @@
-import AuthPage from './pages/AuthPage'
-import Image from '../src/assets/login-background.jpg'
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 function App() {
   return (
-    <div className="background-container">
-      <img className="background" src={Image} alt="background"/>
-      <AuthPage/>
+    <div className="h-screen w-screen overflow-hidden font-roboto">
+      <Router>
+        <Routes>
+          <Route path='/login' element={<LoginPage/>}/>
+          <Route path='/register' element={<RegisterPage/>}/>
+        </Routes>
+      </Router>
     </div>
   );
 }
