@@ -38,7 +38,7 @@ export default function YourDataset() {
                     <div className="w-11/12 h-1/5 flex flex-row justify-center items-center">
                         <h1>OR</h1>
                     </div>
-                    <input className="px-2 w-11/12 text-sm border border-white outline-none bg-transparent text-white h-1/5 mt-auto" placeholder="[OPTIONAL] URL to your paper..."/>
+                    <input className="px-2 w-11/12 text-sm border border-white outline-none bg-transparent text-white h-1/5 mt-auto" placeholder="Links to your repository (Google Drive, OneDrive, Github)"/>
                 </div>
             </div>
             <div className="w-11/12 h-14 mt-4 flex flex-row">
