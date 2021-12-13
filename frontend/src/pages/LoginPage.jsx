@@ -39,7 +39,7 @@ export default function LoginPage() {
 
     return (
         <div className="w-full h-full flex flex-col justify-center items-center background-gray overflow-y-auto rounded-br-xl">
-            <img className="fixed top-0 left-0 w-screen h-screen z-0" src={Background} alt="background"/>
+            <img className="fixed top-0 left-0 w-screen z-0" src={Background} alt="background"/>
             <img className="z-10" src={Logo} alt="logo"/>
             <input className="w-72 text-sm p-3 mt-10 rounded-md outline-none bg-transparent border border-white text-white font-extralight z-10" placeholder="USERNAME" value={username} type="text" onChange={(e) => handleUsernameChange(e)} />
             <input className="w-72 text-sm p-3 mt-4 rounded-md outline-none bg-transparent border border-white text-white font-extralight z-10" placeholder="PASSWORD" value={password} type="password" onChange={(e) => handlePasswordChange(e)} />
