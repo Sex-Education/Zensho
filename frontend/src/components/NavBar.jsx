@@ -19,21 +19,21 @@ export default function NavBar() {
         <div className="fixed h-full z-20 w-64 background-gray border-r border-gray-500">
            <div className="h-1/2 w-full flex flex-col items-center">
                <img src={Logo} alt="logo" className="p-8"/>
-               <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer hover:bg-gray-600" onClick={() => navigateTo('/profile')}>
+               <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer hover:bg-gray-600 text-gray-300 hover:text-white" onClick={() => navigateTo('/profile')}>
                    <img className="mr-2" src={ProfileIcon} alt="profile"/>
-                   <h3 className="text-base text-gray-300">Profile page</h3>
+                   <h3 className="text-base">Profile page</h3>
                </div>
-               <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer hover:bg-gray-600" onClick={() => navigateTo('/store')}>
+               <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer hover:bg-gray-600 text-gray-300 hover:text-white" onClick={() => navigateTo('/store')}>
                    <img className="mr-2" src={StoreIcon} alt="profile"/>
-                   <h3 className="text-base text-gray-300">Store</h3>
+                   <h3 className="text-base">Store</h3>
                </div>
-               <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer hover:bg-gray-600" onClick={() => navigateTo('/dataset')}>
+               <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer hover:bg-gray-600 text-gray-300 hover:text-white" onClick={() => navigateTo('/dataset')}>
                    <img className="mr-2" src={DatasetIcon} alt="profile"/>
-                   <h3 className="text-base text-gray-300">Your datasets</h3>
+                   <h3 className="text-base">Your datasets</h3>
                </div>
-               <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer hover:bg-gray-600" onClick={() => navigateTo('/subscription')}>
+               <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer hover:bg-gray-600 text-gray-300 hover:text-white" onClick={() => navigateTo('/subscription')}>
                    <img className="mr-2" src={SubIcon} alt="profile"/>
-                   <h3 className="text-base text-gray-300">Subscription</h3>
+                   <h3 className="text-base">Subscription</h3>
                </div>
             </div> 
             <div className="h-1/2 w-full flex flex-col items-center justify-end pb-4">
