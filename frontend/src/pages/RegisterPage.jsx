@@ -49,7 +49,7 @@ export default function RegisterPage() {
     }
 
     return (
-        <div className="w-full h-full flex flex-col justify-center items-center background-gray overflow-y-auto rounded-br-xl">
+        <div className="w-full h-full flex flex-col justify-center items-center background-gray overflow-y-auto">
             <img className="fixed top-0 left-0 w-screen z-0" src={Background} alt="background"/>
             <img className="z-10" src={Logo} alt="logo"/>
             <input className="w-72 text-sm p-3 mt-10 rounded-md outline-none bg-transparent border border-white text-white font-extralight z-10" placeholder="EMAIL" value={email} type="email" onChange={(e) => handleEmailChange(e)} />

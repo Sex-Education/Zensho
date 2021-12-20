@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import FileIcon from '../assets/icons/file.svg'
-import BellIcon from '../assets/icons/bell.svg'
+import SearchNav from '../components/SearchNav'
 
 export default function YourDataset() {
     const [check,setCheck] = useState(true)
+    const [file,setFile] = useState(null)
+    const [fileName,setFileName] = useState("Please input your file...")
 
     const toggleCheck = () => {
         setCheck(!check)
@@ -11,14 +13,17 @@ export default function YourDataset() {
 
     useEffect(() => {
         console.log("Rerender your dataset")
-    },[])
+    },[file,fileName])
+
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0])
+        setFileName(e.target.files[0].name)
+        // console.log(e.target.files[0])
+    }
 
     return (
         <div className="ml-64 page-width h-full background-gray text-white flex flex-col items-center">
-            <div className="w-11/12 h-8 mt-8 flex flex-row justify-end">
-                <img src={BellIcon} className="cursor-pointer" alt="bell"/>
-                <input type="text" className="rounded-2xl bg-gray-700 p-4 ml-4 text-sm outline-none w-1/3" placeholder="Animal"/>
-            </div>
+            <SearchNav/>
             <h1 className="w-11/12 text-xl text-center border-b border-white mt-2">Uploading new dataset</h1>
             <input className="px-2 w-11/12 text-lg border border-white outline-none bg-transparent text-white mt-6" placeholder="Enter dataset title..."/>
             <textarea className="px-2 py-1 w-11/12 text-sm border border-white outline-none bg-transparent text-white mt-6 resize-none h-28" placeholder="Put your description here, including experiment, user manual, update logs, notifications,..."/>
@@ -28,12 +33,13 @@ export default function YourDataset() {
                     <input className="px-2 w-11/12 text-sm border border-white outline-none bg-transparent text-white h-1/6 mt-auto" placeholder="[OPTIONAL] URL to your paper..."/>
                 </div>
                 <div className="w-1/2 h-full flex flex-col items-end">
-                    <div className="p-2 w-11/12 text-sm border border-white outline-none bg-transparent text-white resize-none h-3/5 flex flex-col items-center">
+                    <div className="p-2 w-11/12 text-sm border border-white outline-none bg-transparent text-white resize-none h-3/5 flex flex-col items-center overflow-hidden">
                         <h1 className="w-full text-center font-bold">Drag and drop files to upload</h1>
                         <h2 className="w-full text-center font-extralight italic">Temporarily, we only accept .csv files</h2>
-                        <img className="my-2" src={FileIcon} alt="file"/>
-                        {/* <input className="bg-gray-400" type="file"/> */}
-                        <button className="w-1/3 h-7 rounded-2xl text-white bg-gray-600">Browse File</button>
+                        <img className="my-2 h-16" src={FileIcon} alt="file"/>
+                        <h3>{fileName}</h3>
+                        <input onChange={(e) => handleFileChange(e)} className="hidden" id="upload-file" accept=".csv" type="file"/>
+                        <label for="upload-file" className="w-1/3 mt-1 rounded-2xl text-white bg-gray-600 text-center cursor-pointer p-1 text-sm align-middle items-center">Browse File</label>
                     </div>
                     <div className="w-11/12 h-1/5 flex flex-row justify-center items-center">
                         <h1>OR</h1>
