@@ -30,6 +30,7 @@ func main() {
 		api.POST("/register", controllers.Register)
 		api.POST("/login", controllers.Login)
 		api.POST("/remove-user", controllers.RemoveUser)
+		api.POST("/upload", controllers.UploadDataset)
 	}
 	r.Run(":8080")
 }
