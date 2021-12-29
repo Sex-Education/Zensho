@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"mime/multipart"
+	"os"
 
 	"path/filepath"
 
@@ -18,8 +19,14 @@ var Bucket *storage.BucketHandle
 
 func init() {
 
+	accountJson := os.Getenv("ACCOUNT_JSON")
+
+	if len(accountJson) == 0 {
+		log.Println("Account json not found in ENV, skipping cloud storage connection")
+		return
+	}
 	ctx := context.Background()
-	client, err := storage.NewClient(ctx, option.WithCredentialsFile("cloudstorage/account.json"))
+	client, err := storage.NewClient(ctx, option.WithCredentialsJSON([]byte(accountJson)))
 	if err != nil {
 		// TODO: Handle error.
 	}
