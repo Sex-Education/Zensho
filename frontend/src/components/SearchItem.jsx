@@ -1,11 +1,18 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export default function SearchItem({imageSrc, datasetName, username, description, categories}) {
+export default function SearchItem({id, imageSrc, datasetName, username, description, categories}) {
+    const navigate = useNavigate()
+
+    const viewDataset = (id) => {
+        navigate(`/dataset/${id}`)
+    }
+    
     return (
         <div className="w-11/12 h-28 flex flex-row items-center pb-1 flex-shrink-0 mt-6">
             <img src={imageSrc} alt="dataset" className="h-28 w-28 rounded-md object-cover"/>
             <div className="w-2/3 h-full flex flex-col ml-2 flex-shrink-0">
-                <h1 className="w-full h-1/3 text-yellow-300 font-bold text-2xl">{datasetName}</h1>
+                <h1 className="w-full h-1/3 text-yellow-300 font-bold text-2xl cursor-pointer" onClick={() => viewDataset(id)}>{datasetName}</h1>
                 <p className="w-full h-1/2 font-light text-sm truncate">{description}</p>
                 <div className="w-full h-1/6 flex flex-row justify-between mt-auto">
                     <h3 className="font-light text-sm">by <span className="font-bold underline cursor-pointer">{username}</span></h3>

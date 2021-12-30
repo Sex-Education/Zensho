@@ -15,7 +15,7 @@ export default function Search() {
             <div className="w-11/12 border-b border-white mt-4">
                 <h1>{datasetList.length} results for "{q}"</h1>
             </div>
-            {datasetList.map(item => <SearchItem imageSrc={item.imageSrc} datasetName={item.name} username={item.username} description={item.description} categories={item.categories}/>)}
+            {datasetList.map(item => <SearchItem id={item.id} imageSrc={item.imageSrc} datasetName={item.name} username={item.username} description={item.description} categories={item.categories}/>)}
         </div>
     )
 }
