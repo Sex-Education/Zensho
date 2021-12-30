@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import FileIcon from '../assets/icons/file.svg'
 import SearchNav from '../components/SearchNav'
 
-export default function YourDataset() {
+export default function UploadDataset() {
     const [check,setCheck] = useState(true)
     const [file,setFile] = useState(null)
     const [fileName,setFileName] = useState("Please input your file...")
