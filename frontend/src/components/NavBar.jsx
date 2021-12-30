@@ -24,15 +24,15 @@ export default function NavBar() {
                    <h3 className="text-base">Profile page</h3>
                </div>
                <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer hover:bg-gray-600 text-gray-300 hover:text-white" onClick={() => navigateTo('/store')}>
-                   <img className="mr-2" src={StoreIcon} alt="profile"/>
+                   <img className="mr-2" src={StoreIcon} alt="store"/>
                    <h3 className="text-base">Store</h3>
                </div>
-               <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer hover:bg-gray-600 text-gray-300 hover:text-white" onClick={() => navigateTo('/dataset')}>
-                   <img className="mr-2" src={DatasetIcon} alt="profile"/>
+               <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer hover:bg-gray-600 text-gray-300 hover:text-white" onClick={() => navigateTo('/upload')}>
+                   <img className="mr-2" src={DatasetIcon} alt="dataset"/>
                    <h3 className="text-base">Your datasets</h3>
                </div>
                <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer hover:bg-gray-600 text-gray-300 hover:text-white" onClick={() => navigateTo('/subscription')}>
-                   <img className="mr-2" src={SubIcon} alt="profile"/>
+                   <img className="mr-2" src={SubIcon} alt="subs"/>
                    <h3 className="text-base">Subscription</h3>
                </div>
             </div> 

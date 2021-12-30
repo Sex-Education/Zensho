@@ -3,6 +3,8 @@ import RegisterPage from './pages/RegisterPage';
 import NavBar from './components/NavBar';
 import YourDataset from './pages/YourDataset';
 import StoreOverview from './pages/StoreOverview';
+import ViewDataset from './pages/ViewDataset';
+import Search from './pages/Search';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 function App() {
@@ -14,7 +16,9 @@ function App() {
           <Route path='/register' element={<RegisterPage/>}/>
           <Route path='/profile' element={<><NavBar/></>}/>
           <Route path='/store' element={<><NavBar/><StoreOverview/></>}/>
-          <Route path='/dataset' element={<><NavBar/><YourDataset/></>}/>
+          <Route path='/upload' element={<><NavBar/><YourDataset/></>}/>
+          <Route path='/dataset/:id' element={<><NavBar/><ViewDataset/></>}/>
+          <Route path='/search' element={<><NavBar/><Search/></>}/>
           <Route path='/subscription' element={<><NavBar/></>}/>
         </Routes>
       </Router>
