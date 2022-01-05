@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import NavBar from './components/NavBar';
+import UploadDataset from './pages/UploadDataset';
+import StoreOverview from './pages/StoreOverview';
+import ViewDataset from './pages/ViewDataset';
+import Search from './pages/Search';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
+import { useState } from 'react';
+import AuthContext from './context/auth.context';
+import Logout from './pages/Logout';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [auth, setAuth] = useState(true)
+
+  const toggleAuth = () => setAuth(!auth) 
+
+  if (auth === true) {
+    return (
+      <div className="h-screen w-screen overflow-hidden font-roboto">
+        <AuthContext.Provider value={{isAuth: auth, toggleAuth, userId: 69}}>
+          <Router>
+            <Routes>
+              <Route path='/profile' element={<><Logout/></>} />
+              <Route path='/store' element={<><NavBar /><StoreOverview /></>} />
+              <Route path='/upload' element={<><NavBar /><UploadDataset /></>} />
+              <Route path='/dataset/:id' element={<><NavBar /><ViewDataset /></>} />
+              <Route path='/search' element={<><NavBar /><Search /></>} />
+              <Route path='/subscription' element={<><NavBar /></>} />
+              <Route
+                path="*"
+                element={<Navigate to="/store" />}
+              />
+            </Routes>
+          </Router>
+        </AuthContext.Provider>
+      </div>
+    );
+  }
+  else {
+    return (
+      <div className="h-screen w-screen overflow-hidden font-roboto">
+        <Router>
+          <Routes>
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route
+              path="*"
+              element={<Navigate to="/login" />}
+            />
+          </Routes>
+        </Router>
+      </div>
+    )
+  }
 }
 
 export default App;
