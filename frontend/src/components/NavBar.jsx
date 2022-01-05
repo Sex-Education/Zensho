@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Logo from '../assets/icons/logo.svg'
 import ProfileIcon from '../assets/icons/profile.svg'
 import StoreIcon from '../assets/icons/store.svg'
@@ -7,6 +7,7 @@ import SubIcon from '../assets/icons/sub.svg'
 import SettingIcon from '../assets/icons/setting.svg'
 import DownloadIcon from '../assets/icons/download.svg'
 import { useNavigate } from 'react-router-dom'
+import AuthContext from '../context/auth.context'
 
 export default function NavBar() {
     const navigate = useNavigate()
@@ -14,6 +15,8 @@ export default function NavBar() {
     const navigateTo = (url) => {
         navigate(url)
     }
+
+    const { userId } = useContext(AuthContext)
 
     return (
         <div className="fixed h-full z-20 w-64 background-gray border-r border-gray-500">
@@ -47,7 +50,7 @@ export default function NavBar() {
                 </div>
                 <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer">
                    <img className="mr-2 h-6 w-6 rounded-full overflow-hidden" src="https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg" alt="profile"/>
-                   <h3 className="text-base text-gray-300">Elon Musk</h3>
+                   <h3 className="text-base text-gray-300">{userId}</h3>
                 </div>
             </div> 
         </div>

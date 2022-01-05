@@ -1,3 +1,5 @@
+//add comment id
+
 export const commentList = [
     {
         avatarSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWso3_kY3Mhqp5OxunzcMCvowRRvheULy5EsnNPybd7JGGfk3CU_6ms9yDvC-dL6Fe5oQ&usqp=CAU",

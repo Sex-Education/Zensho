@@ -5,25 +5,54 @@ import UploadDataset from './pages/UploadDataset';
 import StoreOverview from './pages/StoreOverview';
 import ViewDataset from './pages/ViewDataset';
 import Search from './pages/Search';
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
+import { useState } from 'react';
+import AuthContext from './context/auth.context';
+import Logout from './pages/Logout';
 
 function App() {
-  return (
-    <div className="h-screen w-screen overflow-hidden font-roboto">
-      <Router>
-        <Routes>
-          <Route path='/login' element={<LoginPage/>}/>
-          <Route path='/register' element={<RegisterPage/>}/>
-          <Route path='/profile' element={<><NavBar/></>}/>
-          <Route path='/store' element={<><NavBar/><StoreOverview/></>}/>
-          <Route path='/upload' element={<><NavBar/><UploadDataset/></>}/>
-          <Route path='/dataset/:id' element={<><NavBar/><ViewDataset/></>}/>
-          <Route path='/search' element={<><NavBar/><Search/></>}/>
-          <Route path='/subscription' element={<><NavBar/></>}/>
-        </Routes>
-      </Router>
-    </div>
-  );
+  const [auth, setAuth] = useState(true)
+
+  const toggleAuth = () => setAuth(!auth) 
+
+  if (auth === true) {
+    return (
+      <div className="h-screen w-screen overflow-hidden font-roboto">
+        <AuthContext.Provider value={{isAuth: auth, toggleAuth, userId: 69}}>
+          <Router>
+            <Routes>
+              <Route path='/profile' element={<><Logout/></>} />
+              <Route path='/store' element={<><NavBar /><StoreOverview /></>} />
+              <Route path='/upload' element={<><NavBar /><UploadDataset /></>} />
+              <Route path='/dataset/:id' element={<><NavBar /><ViewDataset /></>} />
+              <Route path='/search' element={<><NavBar /><Search /></>} />
+              <Route path='/subscription' element={<><NavBar /></>} />
+              <Route
+                path="*"
+                element={<Navigate to="/store" />}
+              />
+            </Routes>
+          </Router>
+        </AuthContext.Provider>
+      </div>
+    );
+  }
+  else {
+    return (
+      <div className="h-screen w-screen overflow-hidden font-roboto">
+        <Router>
+          <Routes>
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route
+              path="*"
+              element={<Navigate to="/login" />}
+            />
+          </Routes>
+        </Router>
+      </div>
+    )
+  }
 }
 
 export default App;

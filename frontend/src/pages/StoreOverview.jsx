@@ -1,8 +1,9 @@
 import React from 'react'
 import SearchNav from '../components/SearchNav'
 import DatasetCard from '../components/DatasetCard'
-import Left from '../assets/icons/left.png'
-import Right from '../assets/icons/right.png'
+// import Left from '../assets/icons/left.png'
+// import Right from '../assets/icons/right.png'
+import { datasetList } from '../sampleData/datasets'
 
 export default function StoreOverview() {
     return (
@@ -29,15 +30,16 @@ export default function StoreOverview() {
                 </div>
             </div>
             <div className="w-11/12 h-1/3 flex flex-col">
-                <div className="h-1/6 my-3 flex flex-row items-center overflow-hidden justify-between px-4">
+                <div className="h-1/3 my-3 flex flex-row items-center overflow-hidden justify-between px-4">
                     <h3 className="">Trending Datasets</h3>
                     <div className="flex flex-row items-center">
-                        <img className="w-6 h-6 bg-gray-100 rounded-full mx-1 cursor-pointer" src={Left} alt="left"/>
-                        <img className="w-6 h-6 bg-gray-100 rounded-full mx-1 cursor-pointer" src={Right} alt="right"/>
+                        {/* <img className="w-6 h-6 bg-gray-100 rounded-full mx-1 cursor-pointer" src={Left} alt="left"/>
+                        <img className="w-6 h-6 bg-gray-100 rounded-full mx-1 cursor-pointer" src={Right} alt="right"/> */}
+                        <h1 className="cursor-pointer">See All</h1>
                     </div>
                 </div>
-                <div className="h-full w-full flex flex-row justify-center">
-                    {[1,2,3,4,5].map(item => <DatasetCard id={item} src="https://images.hdqwalls.com/wallpapers/japan-sunset-purple-evening-4k-5m.jpg" title={`No.${item} Dataset`} author={`No.${item} Author`}/>)}
+                <div className="h-2/3 w-full flex flex-row justify-center">
+                    {datasetList.map(item => <DatasetCard id={item.id} src={item.imageSrc} title={item.name} author={item.username}/>)}
                 </div>
             </div>
         </div>

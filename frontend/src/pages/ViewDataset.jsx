@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import SearchNav from '../components/SearchNav'
 import Comment from '../components/Comment'
 import { useParams } from 'react-router-dom'
+import Avatar from '../components/Avatar'
 
 import {commentList} from '../sampleData/comments'
+import AuthContext from '../context/auth.context'
 
 export default function ViewDataset() {
     const { id } = useParams()
 
     const IMG_SRC = "https://images.ctfassets.net/hrltx12pl8hq/4plHDVeTkWuFMihxQnzBSb/aea2f06d675c3d710d095306e377382f/shutterstock_554314555_copy.jpg"
+
+    const {isAuth, userId} = useContext(AuthContext)
 
     return (
         <div className="ml-64 page-width h-screen text-white flex flex-col items-center overflow-y-scroll background-gray">
@@ -38,7 +42,17 @@ export default function ViewDataset() {
             </div>
             <div className="w-4/5 h-auto flex-shrink-0">
                 <h1>Comment <span>({commentList.length})</span></h1>
-                {commentList.map(item => <Comment avatarSrc={item.avatarSrc} username={item.username} commentBody={item.commentBody}/>)}
+                <div className="w-full h-auto mt-4 flex flex-row">
+                    <Avatar src="https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg"/>
+                    <div className="ml-8 h-auto w-full border border-white py-1 px-4">
+                        <h1 className="text-yellow-400 font-bold">Elon Musk</h1>
+                        <textarea className="font-light bg-transparent focus:outline-none w-full resize-none" placeholder="Your comment"/>
+                        <div className="w-full flex flex-row justify-end">
+                            <button className="rounded-xl bg-gray-700 py-1 px-2 m-1">Post</button>
+                        </div>
+                    </div>
+                </div>
+                {commentList.map(item => <Comment key={Math.random(100)} avatarSrc={item.avatarSrc} username={item.username} commentBody={item.commentBody}/>)}
             </div>
         </div>
     )

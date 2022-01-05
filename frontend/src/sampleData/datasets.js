@@ -1,3 +1,17 @@
+// {
+//     id: 0,
+//     name: "Dataset 0",
+//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+//     imageSrc: "https://www.gardendesign.com/pictures/images/675x529Max/site_3/helianthus-yellow-flower-pixabay_11863.jpg",
+//     username: "Ronaldo",
+//     categories: ["Animal","Game"]
+//     sourceCode: 
+//     URLtopaper:
+//     file:
+//     links to repository:
+//     state: private/public
+// },
+
 export const datasetList = [
     {
         id: 0,
