@@ -8,8 +8,8 @@ FROM alpine:latest as FrontendBuilder
 COPY ./frontend /frontend
 WORKDIR /frontend
 RUN apk add --no-cache git openssh && \
-    apk add nodejs=16.13.1 && \
-    apk add npm=8.1.2 && \
+    apk add nodejs && \
+    apk add npm && \
     npm install -g yarn && \
     yarn install && \
     yarn run build
