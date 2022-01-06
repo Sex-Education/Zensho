@@ -15,7 +15,8 @@ func RunMigration() {
 	// statement = `DROP TABLE dataset;`
 	_, e := connection.PostgresConnection.Exec(statement)
 	if e != nil {
-		log.Fatal(e.Error())
+		log.Print(e.Error())
+		return
 	}
 
 	statement = `CREATE TABLE IF NOT EXISTS dataset (
@@ -31,26 +32,24 @@ func RunMigration() {
 	);`
 	_, e = connection.PostgresConnection.Exec(statement)
 	if e != nil {
-		log.Fatal(e.Error())
+		log.Print(e.Error())
+		return
 	}
-	err := connection.PostgresConnection.Ping()
-	if err != nil {
-		log.Print("sdfsdf")
-	}
-	log.Print("osdf")
 }
 
 func ResetDatabase() {
 	statement := `DROP TABLE users;`
 	_, e := connection.PostgresConnection.Exec(statement)
 	if e != nil {
-		log.Fatal(e.Error())
+		log.Print(e.Error())
+		return
 	}
 
 	statement = `DROP TABLE dataset;`
 	_, e = connection.PostgresConnection.Exec(statement)
 	if e != nil {
-		log.Fatal(e.Error())
+		log.Print(e.Error())
+		return
 	}
 	RunMigration()
 }

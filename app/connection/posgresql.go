@@ -20,7 +20,8 @@ func init() {
 	var err error
 	PostgresConnection, err = sql.Open("postgres", conninfo)
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err.Error())
+		return
 	}
 
 	err = PostgresConnection.Ping()

@@ -40,7 +40,8 @@ func FindDatasetById(id string) *Dataset {
 		err := row.Scan(&datasetId, &datasetName, &username, &datasetUrl,
 			&description, &imageUrl, &uploadedDate)
 		if err != nil {
-			log.Fatal(err.Error())
+			log.Print(err.Error())
+			return nil
 		}
 		dataset.DatasetId = datasetId.String
 		dataset.DatasetName = datasetName.String

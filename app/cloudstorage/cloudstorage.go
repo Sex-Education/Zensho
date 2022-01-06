@@ -34,7 +34,7 @@ func init() {
 	Bucket = client.Bucket("zensho-335305.appspot.com")
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Print(err)
 	}
 }
 
