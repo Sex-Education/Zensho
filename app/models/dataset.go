@@ -64,7 +64,7 @@ func GetAllDataset() *[]Dataset {
 	// _, e := connection.PostgresConnection.Exec(statement, d.DatasetName, d.UserName, d.DatasetUrl)
 	rows, err := connection.PostgresConnection.Query(statement)
 	if err != nil {
-		log.Fatal(err.Error())
+		log.Print(err.Error())
 		return nil
 	}
 	defer rows.Close()
@@ -76,7 +76,7 @@ func GetAllDataset() *[]Dataset {
 		dataset := &Dataset{}
 		if err := rows.Scan(&datasetId, &datasetName, &username, &datasetUrl,
 			&description, &imageUrl, &uploadedDate); err != nil {
-			log.Fatal(err.Error())
+			log.Print(err.Error())
 		}
 		dataset.DatasetId = datasetId.String
 		dataset.DatasetName = datasetName.String
