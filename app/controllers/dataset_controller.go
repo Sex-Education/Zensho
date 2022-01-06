@@ -83,3 +83,22 @@ func GetDatasetById(c *gin.Context) {
 		"data":    dataset,
 	})
 }
+
+func GetAllDataset(c *gin.Context) {
+
+	datasets := models.GetAllDataset()
+	if datasets == nil {
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+			"message": "dataset not found",
+			"data":    nil,
+		})
+		return
+	}
+
+	// dataJson, _ := json.Marshal(dataset)
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "success",
+		"data":    datasets,
+	})
+}

@@ -40,6 +40,8 @@ func main() {
 
 		api.GET("/comment", controllers.GetComment)
 		api.GET("/dataset/:id", controllers.GetDatasetById)
+		api.GET("/dataset", controllers.GetAllDataset)
+
 	}
 	r.Run(":8080")
 }
