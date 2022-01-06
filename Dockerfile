@@ -7,7 +7,7 @@ RUN go build main.go
 FROM alpine:latest as FrontendBuilder
 COPY ./frontend /frontend
 WORKDIR /frontend
-RUN --no-cache git openssh &&
+RUN apk add --no-cache git openssh &&
     apk add nodejs=16.13.1 && \
     apk add npm=8.1.2 && \
     npm install -g yarn && \
