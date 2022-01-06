@@ -9,10 +9,12 @@ type Dataset struct {
 	UserName     string
 	UploadedDate string
 	UpdatedDate  string
+	Description  string
+	ImageUrl     string
 }
 
 func (d *Dataset) Save() error {
-	statement := `INSERT INTO dataset (dataset_name, username, dataset_url) values($1,$2,$3)`
+	statement := `INSERT INTO dataset (dataset_name, username, dataset_url, description, image_url) values($1,$2,$3)`
 	_, e := connection.PostgresConnection.Exec(statement, d.DatasetName, d.UserName, d.DatasetUrl)
 	if e != nil {
 		// log.Fatal(e.Error())

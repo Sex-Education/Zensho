@@ -28,10 +28,13 @@ func UploadDataset(c *gin.Context) {
 
 	datasetName := c.PostForm("dataset_name")
 	username := c.PostForm("username")
+	description := c.PostForm("description")
 
 	dataset := models.Dataset{}
 	dataset.DatasetName = datasetName
 	dataset.UserName = username
+	dataset.Description = description
+	dataset.ImageUrl = "https://"
 	dataset.DatasetUrl, err = cloudstorage.Upload(blobFile, file.Filename, c)
 
 	if err != nil {
