@@ -28,10 +28,13 @@ func UploadDataset(c *gin.Context) {
 
 	datasetName := c.PostForm("dataset_name")
 	username := c.PostForm("username")
+	description := c.PostForm("description")
 
 	dataset := models.Dataset{}
 	dataset.DatasetName = datasetName
 	dataset.UserName = username
+	dataset.Description = description
+	dataset.ImageUrl = "https://"
 	dataset.DatasetUrl, err = cloudstorage.Upload(blobFile, file.Filename, c)
 
 	if err != nil {
@@ -51,5 +54,51 @@ func UploadDataset(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{
 		"message": "success",
+	})
+}
+
+func GetDatasetById(c *gin.Context) {
+	id := c.Param("id")
+
+	if len(id) == 0 {
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+			"message": "id must be set",
+		})
+		return
+	}
+
+	dataset := models.FindDatasetById(id)
+	if dataset == nil {
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+			"message": "dataset not found",
+			"data":    nil,
+		})
+		return
+	}
+
+	// dataJson, _ := json.Marshal(dataset)
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "success",
+		"data":    dataset,
+	})
+}
+
+func GetAllDataset(c *gin.Context) {
+
+	datasets := models.GetAllDataset()
+	if datasets == nil {
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+			"message": "dataset not found",
+			"data":    nil,
+		})
+		return
+	}
+
+	// dataJson, _ := json.Marshal(dataset)
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "success",
+		"data":    datasets,
 	})
 }

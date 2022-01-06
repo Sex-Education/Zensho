@@ -25,10 +25,32 @@ func RunMigration() {
 		username VARCHAR(20) NOT NULL,
 		uploaded_date DATE DEFAULT NOW(),
 		updated_date DATE DEFAULT NOW(),
-		rating FLOAT(3)
+		rating FLOAT(3),
+		description VARCHAR(1000),
+		image_url VARCHAR(100)
 	);`
 	_, e = connection.PostgresConnection.Exec(statement)
 	if e != nil {
 		log.Fatal(e.Error())
 	}
+	err := connection.PostgresConnection.Ping()
+	if err != nil {
+		log.Print("sdfsdf")
+	}
+	log.Print("osdf")
+}
+
+func ResetDatabase() {
+	statement := `DROP TABLE users;`
+	_, e := connection.PostgresConnection.Exec(statement)
+	if e != nil {
+		log.Fatal(e.Error())
+	}
+
+	statement = `DROP TABLE dataset;`
+	_, e = connection.PostgresConnection.Exec(statement)
+	if e != nil {
+		log.Fatal(e.Error())
+	}
+	RunMigration()
 }
