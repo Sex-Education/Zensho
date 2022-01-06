@@ -33,6 +33,11 @@ func RunMigration() {
 	if e != nil {
 		log.Fatal(e.Error())
 	}
+	err := connection.PostgresConnection.Ping()
+	if err != nil {
+		log.Print("sdfsdf")
+	}
+	log.Print("osdf")
 }
 
 func ResetDatabase() {

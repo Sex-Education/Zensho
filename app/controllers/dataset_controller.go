@@ -56,3 +56,30 @@ func UploadDataset(c *gin.Context) {
 		"message": "success",
 	})
 }
+
+func GetDatasetById(c *gin.Context) {
+	id := c.Param("id")
+
+	if len(id) == 0 {
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+			"message": "id must be set",
+		})
+		return
+	}
+
+	dataset := models.FindDatasetById(id)
+	if dataset == nil {
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+			"message": "dataset not found",
+			"data":    nil,
+		})
+		return
+	}
+
+	// dataJson, _ := json.Marshal(dataset)
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "success",
+		"data":    dataset,
+	})
+}

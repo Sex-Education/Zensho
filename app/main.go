@@ -39,7 +39,7 @@ func main() {
 		api.POST("/upload", controllers.UploadDataset)
 
 		api.GET("/comment", controllers.GetComment)
-
+		api.GET("/dataset/:id", controllers.GetDatasetById)
 	}
 	r.Run(":8080")
 }
