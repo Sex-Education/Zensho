@@ -53,5 +53,5 @@ func Upload(file multipart.File, fileName string, c *gin.Context) (string, error
 		return "", err
 	}
 
-	return "http://storage.googleapis.com/zensho-335305.appspot.com/" + newFileName, nil
+	return "https://firebasestorage.googleapis.com/v0/b/zensho-335305.appspot.com/o/" + newFileName + "?alt=media", nil
 }
