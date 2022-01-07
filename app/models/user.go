@@ -24,12 +24,12 @@ func (u *User) Save() error {
 }
 
 func GetUserByUserName(username string) *User {
-	statement := `SELECT "user_id", "username", "hashedpassword", "role" FROM users 
+	statement := `SELECT "user_id", "username", "hashedpassword", "role", "avatar_url" FROM users 
 				  WHERE "username" = $1`
 	row := connection.PostgresConnection.QueryRow(statement, username)
 	if row != nil {
 		user := &User{}
-		row.Scan(&user.UserId, &user.UserName, &user.HashedPassword, &user.Role)
+		row.Scan(&user.UserId, &user.UserName, &user.HashedPassword, &user.Role, &user.AvatarSrc)
 		return user
 	}
 	return nil
