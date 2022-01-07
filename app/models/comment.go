@@ -9,7 +9,7 @@ type Comment struct {
 	AvatarSrc   string `json:"avatarSrc"`
 	Username    string `json:"username"`
 	CommentBody string `json:"commentBody"`
-	DatasetId   int    `json:"datasetId"`
+	DatasetId   int    `json:"-"`
 	CreatedDate string `json:"createdDate"`
 }
 
