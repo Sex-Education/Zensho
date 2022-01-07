@@ -4,11 +4,10 @@ WORKDIR /app
 RUN go mod download
 RUN go build main.go
 
-FROM alpine:latest as FrontendBuilder
+FROM node:16-alpine as FrontendBuilder
 COPY ./frontend /frontend
 WORKDIR /frontend
-RUN apk add --update --no-cache nodejs curl py-pip make g++ npm git openssh cmake && \
-    npm install -g yarn && \
+RUN apk add --no-cache git openssh
     yarn install && \
     yarn run build
 
