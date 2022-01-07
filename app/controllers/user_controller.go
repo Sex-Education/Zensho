@@ -109,6 +109,7 @@ func Login(c *gin.Context) {
 		"success":    true,
 		"token":      tokenString,
 		"avatar_url": user.AvatarSrc,
+		"username":   user.UserName,
 	})
 	// fmt.Println(tokenString, err)
 
