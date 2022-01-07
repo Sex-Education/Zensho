@@ -1,10 +1,3 @@
-import React, { useEffect } from "react";
-import SearchNav from "../components/SearchNav";
-import SearchItem from "../components/SearchItem";
-import { useSearchParams } from "react-router-dom";
-import axios from "axios";
-import { useState } from "react/cjs/react.development";
-
 /*
 The search function. 
 This is carried out when the user inputs the search keyword into the search bar on the top right corner
@@ -16,6 +9,13 @@ To the right we have an upvote button with current vote count, and also the down
 below which we show how many files are contained in the dataset and the total size of them all.
 The result will not be paginated, instead we allow the user to scroll endlessly, loading more and more search result as they scroll down more to the bottom.
 */
+
+import React, { useEffect } from "react";
+import SearchNav from "../components/SearchNav";
+import SearchItem from "../components/SearchItem";
+import { useSearchParams } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react/cjs/react.development";
 
 export default function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
