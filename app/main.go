@@ -16,9 +16,6 @@ func main() {
 
 	corConfig := cors.DefaultConfig()
 	corConfig.AllowOrigins = []string{"http://localhost:3000"}
-	corConfig.AllowAllOrigins = true
-	corConfig.AllowMethods = []string{"GET", "PUT", "POST", "DELETE", "UPDATE", "OPTIONS"}
-	corConfig.AllowHeaders = []string{"X-Requested-With", "X-HTTP-Method-Override", "Content-Type", "Accept"}
 	corConfig.AllowCredentials = true
 
 	r.Use(cors.New(corConfig))
