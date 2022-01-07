@@ -7,6 +7,13 @@ import (
 
 	"github.com/gin-gonic/gin"
 )
+imageSrc := []string {
+	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8I4ACnYAUxGLMbBA0xklei1OF4PIPuAAC9g&usqp=CAU",
+	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThjr6EmzLIS6xK8noIpfAgFZcr5g1lBnpNdw&usqp=CAU",
+	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSftyfXDoNqMPR5h1FXeUirSXbMsuP6kQ-tVQ&usqp=CAU",
+	"https://www.gardeningknowhow.com/wp-content/uploads/2021/07/sulfur-cosmos-mexican-aster-flowers.jpg",
+	"https://www.gardendesign.com/pictures/images/675x529Max/site_3/helianthus-yellow-flower-pixabay_11863.jpg"
+}
 
 func UploadDataset(c *gin.Context) {
 	file, err := c.FormFile("file")
@@ -34,7 +41,7 @@ func UploadDataset(c *gin.Context) {
 	dataset.DatasetName = datasetName
 	dataset.UserName = username
 	dataset.Description = description
-	dataset.ImageUrl = "https://"
+	// dataset.ImageUrl = imageSrc[rand.Intn(len(imageSrc))]
 	dataset.DatasetUrl, err = cloudstorage.Upload(blobFile, file.Filename, c)
 
 	if err != nil {
