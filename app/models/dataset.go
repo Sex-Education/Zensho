@@ -15,7 +15,7 @@ type Dataset struct {
 	UploadedDate string `json:"uploadedDate"`
 	UpdatedDate  string `json:"updatedDate"`
 	Description  string `json:"description"`
-	ImageUrl     string `json:"iamgeSrc"`
+	ImageUrl     string `json:"imageSrc"`
 }
 
 func (d *Dataset) Save() error {
