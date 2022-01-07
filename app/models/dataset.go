@@ -3,6 +3,7 @@ package models
 import (
 	"database/sql"
 	"log"
+	"strconv"
 	"zensho/connection"
 )
 
@@ -56,12 +57,28 @@ func FindDatasetById(id string) *Dataset {
 	return nil
 }
 
-func GetAllDataset() *[]Dataset {
-	statement := `SELECT "dataset_id", "dataset_name", "username", "dataset_url", "description", "image_url", "uploaded_date" 
-	FROM dataset
-	ORDER BY "uploaded_date" DESC
-	LIMIT 10
-	;`
+func GetAllDataset(filters map[string]string) *[]Dataset {
+	datasetName := filters["datasetName"]
+	page, e := strconv.Atoi(filters["page"])
+	if e != nil {
+		page = 1
+	}
+	limit, e := strconv.Atoi(filters["limit"])
+	if e != nil {
+		limit = 10
+	}
+
+	offset := limit * (page - 1)
+
+	statement := `SELECT "dataset_id", "dataset_name", "username", "dataset_url", "description", "image_url", "uploaded_date" FROM dataset `
+	if len(datasetName) != 0 {
+		statement = statement + ` WHERE "dataset_name" LIKE '%` + datasetName + `%' `
+	}
+	statement = statement + ` ORDER BY "uploaded_date" DESC `
+	statement = statement + ` LIMIT ` + strconv.Itoa(limit)
+	statement = statement + ` OFFSET ` + strconv.Itoa(offset)
+	statement = statement + `;`
+
 	// _, e := connection.PostgresConnection.Exec(statement, d.DatasetName, d.UserName, d.DatasetUrl)
 	rows, err := connection.PostgresConnection.Query(statement)
 	if err != nil {

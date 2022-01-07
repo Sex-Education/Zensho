@@ -85,8 +85,16 @@ func GetDatasetById(c *gin.Context) {
 }
 
 func GetAllDataset(c *gin.Context) {
+	datasetName := c.Query("name")
+	page := c.Query("page")
+	limit := c.Query("limit")
 
-	datasets := models.GetAllDataset()
+	filters := map[string]string{
+		"datasetName": datasetName,
+		"page":        page,
+		"limit":       limit,
+	}
+	datasets := models.GetAllDataset(filters)
 	if datasets == nil {
 		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 			"message": "dataset not found",
