@@ -25,7 +25,7 @@ func GetComment(c *gin.Context) {
 
 func CommentOnPost(c *gin.Context) {
 	username := c.PostForm("username")
-	postId, err := strconv.Atoi(c.PostForm("post_id"))
+	postId, err := strconv.Atoi(c.PostForm("dataset_id"))
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"message": err.Error(),
