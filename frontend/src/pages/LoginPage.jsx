@@ -21,7 +21,7 @@ export default function LoginPage() {
 
     useEffect(() => {
         console.log(toggleAuth, setUser)
-    }, [])
+    }, [toggleAuth, setUser])
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value)
