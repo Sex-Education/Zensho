@@ -23,7 +23,7 @@ func (c *Comment) Save() error {
 	return nil
 }
 
-func GetAllCommentInPost(datasetId string) ([]*Comment, error) {
+func GetAllCommentInPost(datasetId string) ([]Comment, error) {
 	statement := `SELECT comments."username", "comment_body", "created_date", users."avatar_url"
 	FROM comments
 	LEFT JOIN users ON comments.username = users.username
@@ -33,7 +33,7 @@ func GetAllCommentInPost(datasetId string) ([]*Comment, error) {
 	if err != nil {
 		return nil, err
 	}
-	var comments []*Comment
+	comments := []Comment{}
 	defer rows.Close()
 
 	for rows.Next() {
@@ -47,7 +47,7 @@ func GetAllCommentInPost(datasetId string) ([]*Comment, error) {
 			CreatedDate: createdDate.String,
 			AvatarSrc:   avatarUrl.String,
 		}
-		comments = append(comments, comment)
+		comments = append(comments, *comment)
 	}
 	return comments, nil
 }
