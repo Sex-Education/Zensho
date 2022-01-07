@@ -98,8 +98,8 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	c.SetCookie("token", tokenString, -1, "/", "https://zensho.herokuapp.com/", false, true)
-	c.SetCookie("username", user.UserName, -1, "/", "https://zensho.herokuapp.com/", false, false)
+	c.SetCookie("token", tokenString, 3600, "/", "https://zensho.herokuapp.com/", false, true)
+	c.SetCookie("username", user.UserName, 3600, "/", "https://zensho.herokuapp.com/", false, false)
 	c.JSON(http.StatusOK, gin.H{
 		"success": true,
 	})
