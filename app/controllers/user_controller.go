@@ -4,6 +4,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"net/http"
+	"net/url"
 	"time"
 
 	"zensho/models"
@@ -77,10 +78,11 @@ func Login(c *gin.Context) {
 		})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{
-		"success": true,
-		"token":   tokenString,
-	})
+
+	c.SetCookie("token", tokenString, -1, "/", "", false, true)
+	c.SetCookie("username", user.UserName, -1, "/", "", false, false)
+	location := url.URL{Path: "/store"}
+	c.Redirect(http.StatusAccepted, location.RequestURI())
 	// fmt.Println(tokenString, err)
 
 }
