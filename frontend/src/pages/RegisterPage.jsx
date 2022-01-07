@@ -48,9 +48,11 @@ export default function RegisterPage() {
       .post("https://zensho.herokuapp.com/api/register", newUser)
       .then((response) => {
         console.log(response);
+        alert("Success. Please login")
       })
       .catch((error) => {
         console.log(error);
+        alert("Failed. Please try again")
       });
   };
 
