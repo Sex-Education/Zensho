@@ -16,7 +16,7 @@ export default function BrowseItem({id, imgSrc, datasetName, username, updatedDa
                 <h2 className="text-sm font-light">by <span className="underline font-bold">{username}</span></h2>
                 <h3 className="text-sm font-light">Updated at {updatedDate}</h3>
                 <div className="flex flex-row">
-                    {categories.map(item => <h3 className="mr-3 bg-yellow-500 py-1 px-2 rounded-2xl">{item}</h3>)}
+                    {categories.map((item,index) => <h3 key={index} className="mr-3 bg-yellow-500 py-1 px-2 rounded-2xl">{item}</h3>)}
                 </div>
             </div>
         </div>

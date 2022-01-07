@@ -26,7 +26,7 @@ export default function BrowseDataset() {
                 <h1>Recently upload</h1>
             </div>
             <div className="w-11/12 mt-4 grid grid-cols-4 gap-4">
-                {datasetList.map(item => <BrowseItem id={item.id} imgSrc={item.imageSrc} datasetName={item.name} username={item.username} updatedDate={item.updatedDate} categories={["Dog","Cat"]}/>)}
+                {datasetList.map((item,index) => <BrowseItem key={index} id={item.id} imgSrc={item.imageSrc} datasetName={item.name} username={item.username} updatedDate={item.updatedDate} categories={["Dog","Cat"]}/>)}
             </div>
         </div>
     )
