@@ -9,12 +9,13 @@ type User struct {
 	UserName       string
 	HashedPassword string
 	Role           string
+	AvatarSrc      string
 }
 
 func (u *User) Save() error {
 
-	statement := `INSERT INTO users (username, hashedpassword, role) values($1, $2, $3);`
-	_, e := connection.PostgresConnection.Exec(statement, u.UserName, u.HashedPassword, u.Role)
+	statement := `INSERT INTO users (username, hashedpassword, role, avatar_url) values($1, $2, $3, $4);`
+	_, e := connection.PostgresConnection.Exec(statement, u.UserName, u.HashedPassword, u.Role, u.AvatarSrc)
 	if e != nil {
 		// log.Fatal(e.Error())
 		return e

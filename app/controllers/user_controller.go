@@ -3,6 +3,7 @@ package controllers
 import (
 	"crypto/sha256"
 	"encoding/hex"
+	"math/rand"
 	"net/http"
 	"time"
 
@@ -21,6 +22,24 @@ func hashPassword(password string) string {
 	return hex.EncodeToString(hashedPassword[:])
 }
 
+func avatarUrls() []string {
+	return []string{
+		"https://gravatar.com/avatar/196584bfb0fb18d714613e9975675417?s=400&d=robohash&r=x",
+		"https://gravatar.com/avatar/268a7eacd231ad0f66b02d5470bf3563?s=400&d=robohash&r=x",
+		"https://gravatar.com/avatar/f20ce2fd43d380964974d70f7c8c0340?s=400&d=robohash&r=x",
+		"https://gravatar.com/avatar/adf6ac998ecd68651a0af35be0871a47?s=400&d=robohash&r=x",
+		"https://gravatar.com/avatar/c13cb66b30f55cc5dd321e5103b0373d?s=400&d=robohash&r=x",
+		"https://gravatar.com/avatar/acb822ef577ad926587ba1d8cf4fddfc?s=400&d=robohash&r=x",
+		"https://robohash.org/51a247001d85e415773daa3f44330e8f?set=set4&bgset=&size=400x400",
+		"https://api.adorable.io/avatars/400/298bb33f5bd2b65fa05de77fd82b3ee2.png",
+	}
+}
+
+func getRandomAvatarUrl() string {
+	urls := avatarUrls()
+	return urls[rand.Intn(len(avatarUrls()))]
+}
+
 func Register(c *gin.Context) {
 	username := c.PostForm("username")
 	password := c.PostForm("password")
@@ -30,6 +49,7 @@ func Register(c *gin.Context) {
 	user.UserName = username
 	user.HashedPassword = hashedPassword
 	user.Role = "user"
+	user.AvatarSrc = getRandomAvatarUrl()
 
 	err := user.Save()
 	if err != nil {

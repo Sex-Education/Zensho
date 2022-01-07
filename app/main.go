@@ -38,7 +38,9 @@ func main() {
 		api.POST("/remove-user", controllers.RemoveUser)
 		api.POST("/upload", controllers.UploadDataset)
 
-		api.GET("/comment", controllers.GetComment)
+		api.GET("/comment/:id", controllers.GetComment)
+		api.POST("/comment", controllers.CommentOnPost)
+
 		api.GET("/dataset/:id", controllers.GetDatasetById)
 		api.GET("/dataset", controllers.GetAllDataset)
 

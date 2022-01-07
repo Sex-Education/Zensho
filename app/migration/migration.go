@@ -10,7 +10,9 @@ func RunMigration() {
 		user_id SERIAL PRIMARY KEY,
 		username VARCHAR(20) NOT NULL UNIQUE,
 		hashedpassword VARCHAR(100) NOT NULL,
-		role VARCHAR(50) DEFAULT 'user' NOT NULL
+		role VARCHAR(50) DEFAULT 'user' NOT NULL,
+		email VARCHAR(100),
+		avatar_url VARCHAR(1000)
 		);`
 	// statement = `DROP TABLE dataset;`
 	_, e := connection.PostgresConnection.Exec(statement)
@@ -35,6 +37,26 @@ func RunMigration() {
 		log.Print(e.Error())
 		return
 	}
+
+	statement = `CREATE TABLE IF NOT EXISTS comments (
+		comment_id SERIAL PRIMARY KEY,
+		dataset_id INT NOT NULL,
+		username VARCHAR(20) NOT NULL,
+		comment_body VARCHAR(1000) NOT NULL,
+		created_date DATE DEFAULT NOW()
+	);`
+	_, e = connection.PostgresConnection.Exec(statement)
+	if e != nil {
+		log.Print(e.Error())
+		return
+	}
+
+	statement = `CREATE INDEX IF NOT EXISTS idx_on_dataset ON comments (dataset_id, created_date);`
+	_, e = connection.PostgresConnection.Exec(statement)
+	if e != nil {
+		log.Print(e.Error())
+		return
+	}
 }
 
 func ResetDatabase() {
@@ -51,5 +73,13 @@ func ResetDatabase() {
 		log.Print(e.Error())
 		return
 	}
+
+	statement = `DROP TABLE comments;`
+	_, e = connection.PostgresConnection.Exec(statement)
+	if e != nil {
+		log.Print(e.Error())
+		return
+	}
+
 	RunMigration()
 }
