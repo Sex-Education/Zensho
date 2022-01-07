@@ -82,7 +82,7 @@ func Login(c *gin.Context) {
 	c.SetCookie("token", tokenString, -1, "/", "", false, true)
 	c.SetCookie("username", user.UserName, -1, "/", "", false, false)
 	location := url.URL{Path: "/store"}
-	c.Redirect(http.StatusAccepted, location.RequestURI())
+	c.Redirect(http.StatusFound, location.RequestURI())
 	// fmt.Println(tokenString, err)
 
 }
