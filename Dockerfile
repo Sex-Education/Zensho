@@ -7,7 +7,7 @@ RUN go build main.go
 FROM node:16-alpine as FrontendBuilder
 COPY ./frontend /frontend
 WORKDIR /frontend
-RUN apk add --no-cache git openssh
+RUN apk add --no-cache git openssh && \
     yarn install && \
     yarn run build
 
