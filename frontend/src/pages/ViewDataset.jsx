@@ -22,7 +22,7 @@ export default function ViewDataset() {
   const [commentBody, setCommentBody] = useState("");
   const [commentList, setCommentList] = useState([]);
 
-  const { isAuth, username } = useContext(AuthContext);
+  const { avatarUrl, username } = useContext(AuthContext);
 
   useEffect(() => {
     axios
@@ -122,7 +122,7 @@ export default function ViewDataset() {
             Comment <span>({commentList.length})</span>
           </h1>
           <div className="w-full h-auto mt-4 flex flex-row">
-            <Avatar src="https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg" />
+            <Avatar src={avatarUrl} />
             <div className="ml-8 h-auto w-full border border-white py-1 px-4">
               <h1 className="text-yellow-400 font-bold">{username}</h1>
               <textarea

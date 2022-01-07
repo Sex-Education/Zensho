@@ -5,6 +5,9 @@ export default function Logout() {
     const {toggleAuth} = useContext(AuthContext)
     
     const handleLogOut = () => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("username")
+        localStorage.removeItem("avatar_url")
         toggleAuth(false)
     }
 

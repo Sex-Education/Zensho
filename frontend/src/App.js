@@ -15,10 +15,20 @@ import Logout from './pages/Logout';
 function App() {
   const [auth,setAuth] = useState(false)
   const [username,setUsername] = useState(null)
+  const [avatarUrl,setAvatarUrl] = useState("")
 
   useEffect(() => {
     console.log(auth, username)
   },[auth, username])
+
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (localStorage.getItem("username")){
+      setAvatarUrl(localStorage.getItem("avatar_url"))
+      setUsername(localStorage.getItem("username"))
+      setAuth(true)
+    }
+  },[])
 
   const toggleAuth = (a) => {
     setAuth(a) 
@@ -28,7 +38,7 @@ function App() {
   if (auth) {
     return (
       <div className="h-screen w-screen overflow-hidden font-roboto">
-        <AuthContext.Provider value={{isAuth: auth, toggleAuth, username, setUser: setUsername}}>
+        <AuthContext.Provider value={{isAuth: auth, toggleAuth, username, setUser: setUsername, avatarUrl, setAvatarUrl}}>
           <Router>
             <Routes>
               <Route path='/profile' element={<><Logout/></>} />

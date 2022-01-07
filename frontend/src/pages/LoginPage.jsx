@@ -20,7 +20,7 @@ export default function LoginPage() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        console.log(toggleAuth, setUser)
+        // console.log(toggleAuth, setUser)
     }, [toggleAuth, setUser])
 
     const handleUsernameChange = (e) => {
@@ -39,8 +39,11 @@ export default function LoginPage() {
         axios.post("https://zensho.herokuapp.com/api/login",
             newUser
         ).then(response => {
-            console.log(response.data.success)
+            console.log(response)
             if (response.data.success === true){
+                localStorage.setItem("token",response.data.token)
+                localStorage.setItem("avatar_url",response.data.avatar_url)
+                localStorage.setItem("username",response.data.username)
                 toggleAuth(true)
                 setUser(username)
             }

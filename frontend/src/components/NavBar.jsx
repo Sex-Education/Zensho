@@ -16,7 +16,7 @@ export default function NavBar() {
         navigate(url)
     }
 
-    const { username } = useContext(AuthContext)
+    const { username, avatarUrl } = useContext(AuthContext)
 
     return (
         <div className="fixed h-full z-20 w-64 background-gray border-r border-gray-500">
@@ -49,7 +49,7 @@ export default function NavBar() {
                    <h3 className="text-base text-gray-300">Settings</h3>
                 </div>
                 <div className="w-11/12 h-12 my-2 flex flex-row items-center px-8 rounded-xl cursor-pointer">
-                   <img className="mr-2 h-6 w-6 rounded-full overflow-hidden" src="https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg" alt="profile"/>
+                   <img className="mr-2 h-6 w-6 rounded-full overflow-hidden" src={avatarUrl} alt="profile"/>
                    <h3 className="text-base text-gray-300">{username}</h3>
                 </div>
             </div> 

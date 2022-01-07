@@ -4,7 +4,9 @@ const AuthContext = createContext({
     isAuth: false,
     toggleAuth: () => {},
     username: "",
-    setUser: () => {}
+    setUser: () => {},
+    avatarUrl: "",
+    setAvatarUrl: () => {}
 })
 
 export default AuthContext
