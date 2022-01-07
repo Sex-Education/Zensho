@@ -18,7 +18,7 @@ function App() {
   if (auth === true) {
     return (
       <div className="h-screen w-screen overflow-hidden font-roboto">
-        <AuthContext.Provider value={{isAuth: auth, toggleAuth, userId: 69}}>
+        <AuthContext.Provider value={{isAuth: auth, toggleAuth, username: "An"}}>
           <Router>
             <Routes>
               <Route path='/profile' element={<><Logout/></>} />

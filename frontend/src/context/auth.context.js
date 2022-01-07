@@ -3,7 +3,7 @@ import { createContext } from "react";
 const AuthContext = createContext({
     isAuth: false,
     toggleAuth: () => {},
-    userId: 0,
+    username: "",
 })
 
 export default AuthContext
