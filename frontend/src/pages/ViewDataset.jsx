@@ -6,7 +6,6 @@ Below that is the data explorer, which shows the link to the csv file for previe
 Finally we have the comment section, this is also one of the main use cases, 
 any user including the owner can add comments to the dataset and any user of the website can see it.
 */
-
 import React, { useContext, useEffect, useState } from "react";
 import SearchNav from "../components/SearchNav";
 import Comment from "../components/Comment";
