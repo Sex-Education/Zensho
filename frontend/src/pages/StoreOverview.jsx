@@ -5,6 +5,18 @@ import DatasetCard from "../components/DatasetCard";
 // import Right from '../assets/icons/right.png'
 import { datasetList } from "../sampleData/datasets";
 
+/*
+Similar to the homepage, but this time the dataset library is displayed almost fully, 
+however we sort them according to topics so the users can navigate more easily. 
+Each dataset contains a clickable frame, and on that frame we display the name, the institution,
+the latest update date, the categories are displayed in yellow circles. 
+To the right is a three-dot symbol, in which the user has the option to copy the dataset’s full name or thumbnail. 
+Below the yellow categories are the content information, where we show how many files are contained within the dataset as well as their total size. 
+At the bottom, we have the upvote function on the left where users can vote if the dataset interests them, 
+and on the right is the author (or the publisher)’s avatar, where the user can click on to view the author’s profile page.
+If the displayed datasets do not satisfy what the user is looking for, he can press “See all” to the right to view all datasets related to the topic.
+*/
+
 export default function StoreOverview() {
   return (
     <div className="ml-64 page-width h-full background-gray text-white flex flex-col items-center">

@@ -7,6 +7,16 @@ import Avatar from "../components/Avatar";
 import { commentList } from "../sampleData/comments";
 import AuthContext from "../context/auth.context";
 
+
+/*
+This is a typical view page of a dataset, when the user clicks on any valid dataset, he will be transferred here. 
+He will first see the thumbnail of the dataset, then the name, the description, categories, name of the user and last update. 
+Below the thumbnail is the full description of the dataset, showing what the author has written in the description section when he created it. 
+Below that is the data explorer, which shows the link to the csv file for previewing purposes
+Finally we have the comment section, this is also one of the main use cases, 
+any user including the owner can add comments to the dataset and any user of the website can see it.
+*/
+
 export default function ViewDataset() {
   const { id } = useParams();
 

@@ -5,6 +5,11 @@ import Background from "../assets/backgrounds/background.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+/*
+The login screen is where the visitor first enters the website, there he can perform login, register, or ask to renew password if he forgets it.
+In the login screen, we provide input fields for username, password. 
+*/
+
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

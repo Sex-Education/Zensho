@@ -2,6 +2,20 @@ import React, { useEffect, useState } from "react";
 import FileIcon from "../assets/icons/file.svg";
 import SearchNav from "../components/SearchNav";
 
+/*
+Uploading dataset is also one of our main use cases, where each user is allowed to upload their own dataset. 
+To access this functionality, the user clicks on the “Upload new dataset” button while inside the “Your datasets” tab. 
+This will bring up a form like below so he can fill in necessary information to upload a valid dataset.
+Firstly, the fields without the tag “Optional” has to be filled in, 
+such as the dataset title, the description, and the dataset files. 
+We allow the users to upload files from their computer or create links to their repository online such as google drive or github. We also allow the users
+to put their source code related to the dataset (such as neural network code on a trained dataset). 
+There is also accessibility settings, which is “Private” by default. 
+Setting a dataset private means that people can view it, but cannot download or use or comment on it. 
+Public dataset is visible to all in the Internet (including anonymous users). 
+Finally after the user filled in all valid information, he can confirm creating dataset by clicking on the “Create” button.
+*/
+
 export default function UploadDataset() {
   const [check, setCheck] = useState(true);
   const [file, setFile] = useState(null);

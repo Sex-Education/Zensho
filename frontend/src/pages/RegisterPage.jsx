@@ -5,6 +5,11 @@ import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+/*
+There is the register screen, where we require new users to input their username, email, password, and confirm it once again to successfully registrate.
+The user can alter between login and register as he sees fit.
+*/
+
 export default function RegisterPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
