@@ -38,6 +38,14 @@ export default function RegisterPage() {
     setConfirmPassword(e.target.value);
   };
 
+  /*
+    Successfully, create new account with the following information:
+    Username: anpham
+    Password: 123456
+    -------------------
+    Test result: Passed
+    Comment: Need to announce users when they are completed at register process
+  */
   const handleSubmit = () => {
     const newUser = new FormData();
     newUser.append("email", email);

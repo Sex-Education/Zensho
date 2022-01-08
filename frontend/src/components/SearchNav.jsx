@@ -2,6 +2,11 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import BellIcon from '../assets/icons/bell.svg'
 
+/*
+Nice handle test case that leaving the content blank in search box
+------
+Test result: PASSED
+*/
 export default function SearchNav() {
     const navigate = useNavigate()
 
