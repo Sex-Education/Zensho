@@ -4,6 +4,11 @@ import { useState } from "react/cjs/react.development";
 import SearchNav from "../components/SearchNav";
 import BrowseItem from "../components/BrowseItem";
 
+/*
+In tab control store, tested with browsing dataset when clicking view all button. There is some component having no implementation yet.
+------
+Test result: PASSED
+*/
 export default function BrowseDataset() {
     const [datasetList,setDatasetList] = useState([])
 

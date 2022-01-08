@@ -1,6 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
+/*
+    There is some test case returning incorrect results, especially special symbol. Detail see in documents
+    ------------
+    Test result: FAILED
+*/
 export default function SearchItem({id, imageSrc, datasetName, username, description, categories}) {
     const navigate = useNavigate()
 

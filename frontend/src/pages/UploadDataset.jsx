@@ -43,7 +43,7 @@ export default function UploadDataset() {
         }
     }
 
-    const checkFileType = (file) => {
+    const checkFileType = (file) => {   // PASSED with test case uploading another file extension
         if (file === null) return false
         if (csv_extension.includes(file.type)){
             return true
@@ -51,7 +51,7 @@ export default function UploadDataset() {
         return false
     }
 
-    const checkFileSize = (file) => {
+    const checkFileSize = (file) => {   // PASSED with test case uploading file, which size is larger than 15MB
         if (file === null) return false
         if (file.size > 15000000){ //1000000 bytes = 1MB
             return false
@@ -67,6 +67,12 @@ export default function UploadDataset() {
         setUploading(false)
     }
 
+    /*
+        Return correct error, successfully upload new dataset. However, need to route to browsing page after successfully upload new dataset
+        -----------
+        Test result: FAILED
+        Comment: wrong behaviour, upload process takes time with small-size attachment file.
+    */
     const handleSubmit = () => {
         if (!checkFilled()){
             setError("Please fill in all the required information")

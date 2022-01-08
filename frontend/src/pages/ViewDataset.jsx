@@ -16,6 +16,11 @@ import Avatar from "../components/Avatar";
 import AuthContext from "../context/auth.context";
 import axios from "axios";
 
+/*
+  View dataset works well, perform sufficient information and comment
+  ------
+  Test result: PASSED
+*/
 export default function ViewDataset() {
   const { id } = useParams();
   const [data, setData] = useState(null);
@@ -34,6 +39,7 @@ export default function ViewDataset() {
       .catch((error) => console.log(error));
   }, [id]);
 
+  // Some test case do not render avatar images: FIXED
   useEffect(() => {
     axios
       .get(`https://zensho.herokuapp.com/api/comment/${id}`)
@@ -53,7 +59,7 @@ export default function ViewDataset() {
     setCommentBody(e.target.value);
   };
 
-  const postComment = () => {
+  const postComment = () => { // PASSED all test case
     const data = new FormData();
     data.append("username", username);
     data.append("comment_body", commentBody);

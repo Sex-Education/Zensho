@@ -31,6 +31,14 @@ export default function LoginPage() {
         setPassword(e.target.value)
     }
 
+    /*
+        Tested login with the following information:
+        Username: anpham
+        Password: 123456
+        ------
+        Test result: PASSED
+        Comment: Email verification funtion disapperead
+    */
     const handleSubmit = () => {
         const newUser = new FormData()
         newUser.append("username", username)
